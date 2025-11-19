@@ -1,0 +1,1870 @@
+/* 전체 배경 */
+body {
+  background: #f7f8fa;
+}
+
+/* 메인 컨테이너 */
+.farmdetail-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #f7f8fa;
+}
+
+/* 사이드바 */
+.farmdetail-sidebar {
+  width: 260px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0 22px 22px 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 32px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  box-sizing: border-box;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(20px);
+  transition: width 0.5s cubic-bezier(0.77, 0, 0.175, 1),
+              background 0.5s, padding 0.5s, min-width 0.5s, max-width 0.5s;
+}
+
+.farmdetail-sidebar.closed {
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  padding: 32px 6px 18px 6px;
+  align-items: center;
+}
+
+.farmdetail-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.farmdetail-sidebar-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #2E7D32;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.farmdetail-sidebar-title.hidden {
+  display: none !important;
+}
+
+.farmdetail-sidebar-toggle {
+  /* register.css의 button 스타일 오버라이드 */
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 36px !important;
+  height: 36px !important;
+  max-width: 36px !important;
+  border: none !important;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  font-size: 1.2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  background: rgba(76, 175, 80, 0.08) !important;
+  color: #4CAF50 !important;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.farmdetail-sidebar-toggle:hover {
+  background: rgba(76, 175, 80, 0.15) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.farmdetail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+
+.farmdetail-list li,
+.farmdetail-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 44px;
+  padding: 0 16px;
+  margin-bottom: 10px;
+  background: rgba(248, 249, 250, 0.5);
+  border-radius: 10px;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 1.08rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.farmdetail-list li:hover {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2E7D32;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.15);
+  transform: translateX(4px);
+}
+
+.farmdetail-list li[style*="background: rgb(230, 242, 214)"] {
+  background: rgba(76, 175, 80, 0.15) !important;
+  color: #2E7D32;
+  font-weight: 700;
+  transform: translateX(8px);
+  box-shadow: 0 2px 12px rgba(76, 175, 80, 0.2);
+  border-left: 4px solid #4CAF50;
+}
+
+.farmdetail-add-btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 1.08rem;
+  font-weight: 700;
+  background: rgba(248, 249, 250, 0.5);
+  color: #2E7D32;
+  margin-bottom: 0;
+  margin-top: 8px;
+  border: 2px dashed rgba(76, 175, 80, 0.3);
+  box-shadow: none;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.farmdetail-add-btn:hover {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2E7D32;
+  border-color: #4CAF50;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
+}
+
+.farmdetail-empty {
+  color: #7f8c8d;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.farmdetail-empty-btn {
+  width: 270px;
+  height: 190px;
+  margin: 0 auto;
+  border-radius: 22px;
+  border: 2px dashed rgba(76, 175, 80, 0.3);
+  background: rgba(232, 238, 226, 0.95);
+  display: flex;
+  font-size: 1.2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.farmdetail-empty-btn:hover {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2E7D32;
+  font-size: 1.3rem;
+  border: 2px solid #4CAF50;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(76, 175, 80, 0.2);
+}
+
+/* 메인 컨텐츠 */
+.farmdetail-main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 20px 0 20px 20px;
+  background: #f7f8fa;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.farm-info-card-col {
+  flex: 0 0 50%;
+  max-width: 45%;
+  min-width: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.weather-card-col {
+  flex: 0 0 50%;
+  max-width: 45%;
+  min-width: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.control-card-col {
+  flex: 0 0 10%;
+  max-width: 10%;
+  min-width: 80px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* 농장 정보 카드 */
+.farm-info-card,
+.weather-card {
+  min-width: 510px;
+  min-height: 660px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px 40px 32px 40px;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.farm-info-card {
+  margin-left: 10px;
+}
+
+.farm-info-header {
+  width: 100%;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid rgba(76, 175, 80, 0.1);
+  position: relative;
+}
+
+.farm-info-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  border-radius: 1px;
+}
+
+.farm-info-header h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #2E7D32;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.farm-info-header .location {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(76, 175, 80, 0.08);
+  border-radius: 8px;
+  display: inline-flex;
+}
+
+.farm-info-content {
+  width: 100%;
+  padding-top: 8px;
+  position: relative;
+  overflow: visible;
+}
+
+.farm-info-content .grid-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #2E7D32;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 날씨 카드 */
+.weather-card {
+  min-width: 340px;
+  align-items: flex-start;
+}
+
+.weather-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.weather-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #2E7D32;
+}
+
+.city-select {
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 16px;
+  background: rgba(248, 249, 250, 0.5);
+}
+
+.weather-today {
+  display: flex;
+  align-items: center;
+  margin: 22px 0 16px 0;
+}
+
+.weather-icon {
+  font-size: 3.2rem;
+  margin-right: 22px;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-temp {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #4CAF50;
+}
+
+.weather-desc {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+.weather-forecast-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 22px 0 10px 0;
+  color: #2E7D32;
+}
+
+.weather-forecast-row {
+  display: flex;
+  gap: 16px;
+}
+
+.forecast-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  padding: 14px 20px;
+  min-width: 100px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.forecast-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.forecast-date {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4CAF50;
+}
+
+.forecast-temp {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 6px 0;
+  color: #2c3e50;
+}
+
+.forecast-desc {
+  font-size: 1.05rem;
+  color: #7f8c8d;
+}
+
+.weather-divider {
+  width: 100%;
+  border: none;
+  border-top: 2px solid rgba(76, 175, 80, 0.1);
+  margin: 18px 0 18px 0;
+}
+
+.env-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 28px 32px 20px 32px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.env-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.env-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 12px;
+}
+
+.env-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+}
+
+.env-label {
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.env-value {
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+/* 그리드 컨테이너 */
+.grid-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 40px auto;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 28px;
+  width: max-content;
+  gap: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.grid-cell {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.grid-cell.type-0 {
+  background-color: #F9F7E8;
+}
+
+.grid-cell.type-0:hover {
+  background-color: #F5F2D9;
+}
+
+.grid-cell.type-1 {
+  background-color: #FF8B8B;
+}
+
+.grid-cell.type-1:hover {
+  background-color: #FF7A7A;
+}
+
+.grid-cell.type-2 {
+  background-color: #61BFAD;
+}
+
+.grid-cell.type-2:hover {
+  background-color: #4FAF9D;
+}
+
+/* 컨트롤 카드 */
+.control-card {
+  flex: 0 1 20%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 120px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.control-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.control-btn.capture {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+}
+
+.control-btn.capture:hover {
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.25);
+}
+
+.control-btn.upload {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+}
+
+.control-btn.upload:hover {
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.25);
+}
+
+.control-btn.edit {
+  background: rgba(248, 249, 250, 0.5);
+  color: #2c3e50;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.control-btn.edit:hover {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2E7D32;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn.delete {
+  background: rgba(255, 107, 107, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(255, 107, 107, 0.2);
+}
+
+.control-btn.delete:hover {
+  background: rgba(255, 107, 107, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2);
+}
+
+.control-btn.confirm {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+  border: none;
+}
+
+.control-btn.confirm:hover {
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.25);
+}
+
+/* 모달 스타일 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2E7D32;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #7f8c8d;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #2c3e50;
+  transform: scale(1.1);
+}
+
+.iot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.iot-item {
+  padding: 17px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  background: rgba(248, 249, 250, 0.5);
+}
+
+.iot-item:hover {
+  background: rgba(76, 175, 80, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.iot-item.selected {
+  border-color: #4CAF50;
+  background: rgba(76, 175, 80, 0.15);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.iot-item-name {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.modal-footer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.modal-btn.cancel {
+  background: rgba(248, 249, 250, 0.5);
+  color: #7f8c8d;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-btn.cancel:hover {
+  background: rgba(108, 117, 125, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-btn.confirm {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+  border: none;
+}
+
+.modal-btn.confirm:hover {
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.25);
+}
+
+/* 병합 바 컨테이너 */
+.merged-bar-container {
+  display: flex;
+  gap: 16px;
+  min-width: 400px;
+  min-height: 300px;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 420px;
+  overflow: auto;
+  margin-top: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.merged-bar {
+  min-width: 45px;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(248, 249, 250, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.merged-bar:hover {
+  background: rgba(76, 175, 80, 0.1);
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2);
+  transform: translateY(-2px);
+}
+
+.merged-bar.type-0 {
+  background: #F9F7E8;
+  color: #333;
+}
+
+.merged-bar.type-0:hover {
+  background: #F5F2D9;
+}
+
+.merged-bar.type-1 {
+  background: #FF8B8B;
+  color: #fff;
+}
+
+.merged-bar.type-1:hover {
+  background: #FF7A7A;
+  box-shadow: 0 4px 16px rgba(255, 139, 139, 0.3);
+}
+
+.merged-bar.type-2 {
+  background: #61BFAD;
+  color: #fff;
+}
+
+.merged-bar.type-2:hover {
+  background: #4FAF9D;
+  box-shadow: 0 4px 16px rgba(97, 191, 173, 0.3);
+}
+
+.capture-bar-selected {
+  border: 3px solid #4CAF50 !important;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3) !important;
+}
+
+.capture-bar-disabled {
+  cursor: not-allowed !important;
+  opacity: 0.5;
+  border: none !important;
+}
+
+.merged-bar span {
+  font-size: 1.3rem;
+  transition: font-size 0.2s;
+  font-weight: 700;
+}
+
+.merged-bar:hover span {
+  font-size: 1.4rem;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* 캡처 영역 카드 */
+.capture-area-card {
+  width: 800px;
+  max-width: 90vw;
+  max-height: 80vh;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 20;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+}
+
+.capture-area-card h2 {
+  color: #2E7D32;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+/* 캡처 영역 래퍼 */
+.capture-area-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 20px;
+}
+
+/* 캡처 모달 푸터 버튼 */
+.capture-footer-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* 업로드 모달 구조 개선 */
+.upload-modal {
+  padding: 0;
+}
+
+.upload-modal-header {
+  padding: 32px 40px 24px 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upload-modal-header h2 {
+  margin: 0;
+  color: #2E7D32;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.upload-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-header-btn {
+  background: rgba(248, 249, 250, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  height: 32px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.upload-header-btn.analyze {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: #fff;
+  border: none;
+}
+
+.upload-header-btn.analyze:hover:not(:disabled) {
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.25);
+}
+
+.upload-header-btn.analyze:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.upload-header-btn.close {
+  width: 46px;
+  padding: 0;
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+.upload-header-btn.close:hover {
+  background: rgba(255, 107, 107, 0.1);
+  border-color: rgba(255, 107, 107, 0.3);
+  color: #dc2626;
+  transform: scale(1.08);
+}
+
+.upload-modal-close-btn {
+  background: rgba(248, 249, 250, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.upload-modal-close-btn:hover {
+  background: rgba(255, 107, 107, 0.1);
+  border-color: rgba(255, 107, 107, 0.3);
+  color: #dc2626;
+  transform: scale(1.1);
+}
+
+.upload-modal-content {
+  flex: 1;
+  overflow-y: auto;
+
+  min-height: 0;
+}
+
+.upload-modal-footer {
+  padding: 20px 40px 32px 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Bar Detail Card */
+.bar-detail-card {
+  position: relative;
+  width: 40%;
+  min-width: 340px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px 40px 32px 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.bar-detail-back {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  cursor: pointer;
+  z-index: 2;
+  padding: 8px;
+  border-radius: 8px;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  color: #7f8c8d;
+}
+
+.bar-detail-back:hover {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2E7D32;
+  transform: translateX(-2px);
+}
+
+/* Bar Detail Content 스타일 - 게시판 스타일 참조 */
+.bar-detail-content {
+  padding: 24px 16px;
+  text-align: left;
+  width: 100%;
+}
+
+.bar-detail-content h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #2E7D32;
+  margin-bottom: 24px;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(76, 175, 80, 0.1);
+  padding-bottom: 16px;
+  position: relative;
+}
+
+.bar-detail-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  border-radius: 1px;
+}
+
+/* 기본 정보 카드 */
+.bar-info-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.bar-info-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.bar-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.bar-info-item {
+  background: rgba(248, 249, 250, 0.5);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.bar-info-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.bar-info-label {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.bar-info-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.bar-info-value.crop-type {
+  font-size: 1.2rem;
+}
+
+.bar-info-value.crop-type.crop-type-path {
+  color: #333 !important;
+}
+
+.bar-info-value.bar-harvest-value {
+  color: #4CAF50;
+}
+
+/* 분석 결과 항목 스타일 */
+.bar-info-item.bar-analysis-item-unripe {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.2);
+}
+
+.bar-info-item.bar-rotten-item-has {
+  background: rgba(255, 107, 107, 0.1);
+  border-color: rgba(255, 107, 107, 0.2);
+}
+
+.bar-info-item.bar-rotten-item-no {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.2);
+}
+
+.bar-info-value.bar-unripe-value {
+  color: #d97706;
+}
+
+.bar-info-value.bar-rotten-value-has {
+  color: #dc2626;
+}
+
+.bar-info-value.bar-rotten-value-no {
+  color: #16a34a;
+}
+
+.bar-info-full {
+  background: rgba(248, 249, 250, 0.5);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 12px;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.bar-info-full:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* 수확 비율 카드 */
+.bar-harvest-ratio {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 12px;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.25);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.bar-harvest-ratio:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.35);
+}
+
+.bar-harvest-ratio-label {
+  font-size: 0.75rem;
+  margin-bottom: 8px;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.bar-harvest-ratio-value {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* 분석 결과 섹션 */
+.bar-analysis-section {
+  margin-top: 24px;
+  border-top: 2px solid rgba(76, 175, 80, 0.1);
+  padding-top: 24px;
+}
+
+.bar-analysis-title {
+  font-size: 0.75rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #2E7D32;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.bar-analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.bar-analysis-item {
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.bar-analysis-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bar-analysis-item.ripe {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.2);
+}
+
+.bar-analysis-item.unripe {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.2);
+}
+
+.bar-analysis-label {
+  font-size: 0.75rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.bar-analysis-item.ripe .bar-analysis-label {
+  color: #166534;
+}
+
+.bar-analysis-item.unripe .bar-analysis-label {
+  color: #92400e;
+}
+
+.bar-analysis-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.bar-analysis-item.ripe .bar-analysis-value {
+  color: #16a34a;
+}
+
+.bar-analysis-item.unripe .bar-analysis-value {
+  color: #d97706;
+}
+
+.bar-analysis-unit {
+  font-size: 0.85rem;
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+/* 썩은 딸기 상태 */
+.bar-rotten-status {
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  text-align: center;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.bar-rotten-status:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bar-rotten-status.has-rotten {
+  background: rgba(255, 107, 107, 0.1);
+  border-color: rgba(255, 107, 107, 0.2);
+}
+
+.bar-rotten-status.no-rotten {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.2);
+}
+
+.bar-rotten-label {
+  font-size: 0.75rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.bar-rotten-status.has-rotten .bar-rotten-label {
+  color: #991b1b;
+}
+
+.bar-rotten-status.no-rotten .bar-rotten-label {
+  color: #166534;
+}
+
+.bar-rotten-value {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.bar-rotten-status.has-rotten .bar-rotten-value {
+  color: #dc2626;
+}
+
+.bar-rotten-status.no-rotten .bar-rotten-value {
+  color: #16a34a;
+}
+
+.bar-analysis-time {
+  font-size: 0.75rem;
+  color: #7f8c8d;
+  text-align: center;
+  padding: 8px;
+  background: rgba(248, 249, 250, 0.5);
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+/* 촬영 이미지 */
+.bar-image-section {
+  margin-top: 20px;
+}
+
+.bar-image-title {
+  font-size: 0.75rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #7f8c8d;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.bar-image-gallery {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.bar-image-nav-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  color: #2E7D32;
+  font-size: 1.4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.bar-image-nav-btn:hover:not(:disabled) {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: #4CAF50;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.bar-image-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.bar-image-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.bar-image-container:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.bar-image-container img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.bar-image-counter {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* 업로드 모달 분석 결과 */
+.upload-analysis-result {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(20px);
+}
+
+.upload-analysis-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+
+.upload-analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.upload-analysis-item {
+  background: rgba(248, 249, 250, 0.5);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.upload-analysis-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.upload-analysis-item-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.upload-analysis-item-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.upload-analysis-item.ripe {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.2);
+}
+
+.upload-analysis-item.ripe .upload-analysis-item-label {
+  color: #166534;
+}
+
+.upload-analysis-item.ripe .upload-analysis-item-value {
+  color: #16a34a;
+}
+
+.upload-analysis-item.unripe {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.2);
+}
+
+.upload-analysis-item.unripe .upload-analysis-item-label {
+  color: #92400e;
+}
+
+.upload-analysis-item.unripe .upload-analysis-item-value {
+  color: #d97706;
+}
+
+.upload-rotten-status {
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.upload-rotten-status.has-rotten {
+  background: rgba(255, 107, 107, 0.1);
+  border-color: rgba(255, 107, 107, 0.2);
+}
+
+.upload-rotten-status.no-rotten {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.2);
+}
+
+.upload-rotten-label {
+  font-size: 0.75rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.upload-rotten-status.has-rotten .upload-rotten-label {
+  color: #991b1b;
+}
+
+.upload-rotten-status.no-rotten .upload-rotten-label {
+  color: #166534;
+}
+
+.upload-rotten-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.upload-rotten-status.has-rotten .upload-rotten-value {
+  color: #dc2626;
+}
+
+.upload-rotten-status.no-rotten .upload-rotten-value {
+  color: #16a34a;
+}
+
+/* 파일 선택 */
+.upload-file-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed rgba(76, 175, 80, 0.3);
+  border-radius: 12px;
+  background: rgba(248, 249, 250, 0.5);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.upload-file-input:hover {
+  border-color: rgba(76, 175, 80, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.upload-file-count {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.upload-file-section {
+  width: 100%;
+  max-width: 500px;
+}
+
+.upload-file-title {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #2E7D32;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.bar-info-unit {
+  font-size: 0.9rem;
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+.upload-analysis-unit {
+  font-size: 0.9rem;
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+/* 모달 버튼 */
+.upload-modal-buttons {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.upload-modal-footer .upload-modal-buttons {
+  margin-top: 0;
+}
+
+.upload-confirm-button {
+  width: 100%;
+}
+
+/* 반응형 디자인 */
+/* 태블릿 (1024px 이하) */
+@media (max-width: 1024px) {
+  .farmdetail-sidebar {
+    width: 220px;
+  }
+  
+  .farmdetail-sidebar.closed {
+    width: 60px;
+  }
+  
+  .farmdetail-main {
+    gap: 16px;
+    padding: 15px 0 15px 15px;
+  }
+  
+  .farm-info-card-col,
+  .weather-card-col {
+    flex: 0 0 48%;
+    max-width: 48%;
+  }
+  
+  .control-card-col {
+    flex: 0 0 4%;
+    max-width: 4%;
+    min-width: 60px;
+  }
+  
+  .farm-info-card,
+  .weather-card {
+    min-width: auto;
+    padding: 32px 28px 28px 28px;
+  }
+  
+  .bar-detail-card {
+    min-width: 300px;
+    width: 35%;
+  }
+}
+
+/* 태블릿 세로 (768px 이하) */
+@media (max-width: 768px) {
+  .farmdetail-container {
+    flex-direction: column;
+  }
+  
+  .farmdetail-sidebar {
+    width: 100%;
+    border-radius: 0;
+    min-height: auto;
+    padding: 20px 16px;
+  }
+  
+  .farmdetail-sidebar.closed {
+    width: 100%;
+    padding: 20px 16px;
+  }
+  
+  .farmdetail-main {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .farm-info-card-col,
+  .weather-card-col {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .control-card-col {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .farm-info-card,
+  .weather-card {
+    min-width: auto;
+    width: 100%;
+    padding: 28px 24px;
+  }
+  
+  .bar-detail-card {
+    width: 100%;
+    min-width: auto;
+    padding: 32px 24px;
+  }
+  
+  .grid-container {
+    padding: 20px;
+    gap: 6px;
+  }
+  
+  .merged-bar-container {
+    padding: 16px;
+    max-height: 300px;
+  }
+  
+  .capture-area-card,
+  .upload-modal {
+    width: 95vw;
+    max-width: 95vw;
+    max-height: 90vh;
+    padding: 20px;
+  }
+  
+  .upload-modal-header {
+    padding: 24px 20px 20px 20px;
+  }
+  
+
+  
+  .upload-modal-footer {
+    padding: 16px 20px 24px 20px;
+  }
+  
+  .bar-info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .bar-analysis-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .upload-analysis-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .farmdetail-main {
+    gap: 12px;
+    padding: 10px;
+  }
+  
+  .farm-info-card,
+  .weather-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+  
+  .farm-info-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .weather-title {
+    font-size: 1.1rem;
+  }
+  
+  .farm-info-header .location {
+    font-size: 0.9rem;
+  }
+  
+  .weather-temp {
+    font-size: 1.8rem;
+  }
+  
+  .weather-desc {
+    font-size: 0.9rem;
+  }
+  
+  .grid-container {
+    padding: 16px;
+    gap: 4px;
+  }
+  
+  .grid-cell {
+    font-size: 0.8rem;
+  }
+  
+  .merged-bar {
+    min-width: 35px;
+    min-height: 35px;
+  }
+  
+  .merged-bar span {
+    font-size: 1rem;
+  }
+  
+  .bar-detail-card {
+    padding: 24px 16px;
+  }
+  
+  .bar-detail-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .bar-info-card {
+    padding: 20px 16px;
+  }
+  
+  .bar-info-value {
+    font-size: 1.1rem;
+  }
+  
+  .bar-harvest-ratio {
+    padding: 16px;
+  }
+  
+  .bar-harvest-ratio-value {
+    font-size: 1.6rem;
+  }
+  
+  .control-card {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .control-btn {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .capture-area-card,
+  .upload-modal {
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+    max-height: 100vh;
+    padding: 16px;
+  }
+  
+  .upload-modal-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .upload-header-btn {
+    height: 28px;
+    padding: 0 8px;
+    font-size: 0.8rem;
+  }
+  
+  .upload-header-btn.close {
+    width: 28px;
+  }
+  
+  .bar-image-gallery {
+    gap: 8px;
+  }
+  
+  .bar-image-nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  
+  .bar-image-container img {
+    max-height: 200px;
+  }
+  
+  .farmdetail-sidebar-header {
+    margin-bottom: 16px;
+  }
+  
+  .farmdetail-list li,
+  .farmdetail-add-btn {
+    height: 40px;
+    padding: 0 12px;
+    font-size: 1rem;
+  }
+}

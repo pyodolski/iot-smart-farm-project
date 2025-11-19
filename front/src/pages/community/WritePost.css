@@ -1,0 +1,222 @@
+.write-post-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.write-post-container h2 {
+  margin-bottom: 32px;
+  color: #2E7D32;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.write-form-group,
+.form-group {
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.write-form-group label,
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.write-form-group input,
+.write-form-group textarea,
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid #e1e8ed;
+  border-radius: 12px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+}
+
+.write-form-group input,
+.form-group input {
+  height: 56px;
+}
+
+.write-form-group input:focus,
+.write-form-group textarea:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.write-form-group textarea,
+.form-group textarea {
+  min-height: 300px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.write-form-group textarea::placeholder,
+.form-group textarea::placeholder {
+  color: #95a5a6;
+  font-style: italic;
+}
+
+.button-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  flex-wrap: nowrap;
+}
+
+.write-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 120px;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.write-button.submit-button {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+  box-shadow: 0 1px 4px rgba(76, 175, 80, 0.15);
+}
+
+.write-button.submit-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.25);
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+}
+
+.write-button.submit-button:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.write-button.cancel-button {
+  background: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
+  border: 1px solid rgba(108, 117, 125, 0.2);
+  box-shadow: 0 1px 4px rgba(108, 117, 125, 0.1);
+}
+
+.write-button.cancel-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(108, 117, 125, 0.2);
+  background: rgba(108, 117, 125, 0.15);
+  border-color: rgba(108, 117, 125, 0.3);
+  color: #5a6268;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .write-post-container {
+    padding: 20px 15px;
+    margin: 10px;
+    border-radius: 16px;
+  }
+  
+  .write-post-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+  }
+  
+  .write-form-group input,
+  .write-form-group textarea,
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+  
+  .write-form-group textarea,
+  .form-group textarea {
+    min-height: 250px;
+  }
+  
+  .button-group {
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+  }
+  
+  .write-button {
+    flex: 1;
+    max-width: 180px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .write-post-container {
+    padding: 15px 10px;
+    margin: 5px;
+  }
+  
+  .write-post-container h2 {
+    font-size: 1.6rem;
+  }
+  
+  .write-form-group label {
+    font-size: 1rem;
+  }
+  
+  .write-form-group input,
+  .write-form-group textarea,
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .button-group {
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .write-button {
+    flex: 1;
+    max-width: 140px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+}

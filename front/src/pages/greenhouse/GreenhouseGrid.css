@@ -1,0 +1,266 @@
+@import '../../styles/common.css';
+
+.greenhouse-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px 0 rgba(60,80,180,0.10);
+  padding: 40px 40px 32px 40px;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+.greenhouse-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.greenhouse-title {
+  font-size: 1.6rem;
+  margin: 0;
+  color: #2c3e50;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* error-message 스타일은 common.css에서 가져옴 */
+
+.controls-container {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid #e9ecef;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0;
+}
+
+.control-group label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.control-group.value-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+  margin-bottom: 0;
+}
+
+.control-group.value-selector label {
+  margin-right: 0.2rem;
+}
+
+.control-input {
+  padding: 0.4rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  width: 50px;
+  text-align: center;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  background-color: white;
+}
+
+.control-input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgba(0,123,255,.15);
+}
+
+.text-input {
+  padding: 0.4rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  width: 150px;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  background-color: white;
+}
+
+.text-input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgba(0,123,255,.15);
+}
+
+/* control-button 스타일은 common.css에서 가져옴 */
+
+.value-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.value-selector label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+  white-space: nowrap;
+  margin-right: 0.2rem;
+}
+
+.value-selector strong {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.value-button {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #495057;
+  font-size: 0.85rem;
+  width: 60px;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value-button.type-0 {
+  background-color: #F9F7E8;
+  border-color: #F5F2D9;
+}
+
+.value-button.type-0:hover,
+.value-button.type-0.active {
+  background-color: #F5F2D9;
+  border-color: #F5F2D9;
+}
+
+.value-button.type-1 {
+  background-color: #FF8B8B;
+  border-color: #FF7A7A;
+  color: white;
+}
+
+.value-button.type-1:hover,
+.value-button.type-1.active {
+  background-color: #FF7A7A;
+  border-color: #FF7A7A;
+}
+
+.value-button.type-2 {
+  background-color: #61BFAD;
+  border-color: #4FAF9D;
+  color: white;
+}
+
+.value-button.type-2:hover,
+.value-button.type-2.active {
+  background-color: #4FAF9D;
+  border-color: #4FAF9D;
+}
+
+.value-button.active {
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.10);
+}
+
+.grid-container {
+  margin: 32px auto 0 auto;
+  background: #f8fafc;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+  padding: 28px;
+  width: max-content;
+  max-width: 100%;
+  max-height: 520px;
+  overflow: auto;
+  display: grid;
+  gap: 8px;
+}
+
+.grid-cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.grid-cell:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.grid-cell.type-0 {
+  background-color: #F9F7E8;
+}
+.grid-cell.type-0:hover {
+  background-color: #F5F2D9;
+}
+.grid-cell.type-1 {
+  background-color: #FF8B8B;
+}
+.grid-cell.type-1:hover {
+  background-color: #FF7A7A;
+}
+.grid-cell.type-2 {
+  background-color: #61BFAD;
+}
+.grid-cell.type-2:hover {
+  background-color: #4FAF9D;
+}
+
+.control-group.right-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.farm-back-button {
+  padding: 0.3rem 0.6rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 1.2rem;
+  transition: all 0.2s;
+  font-size: 0.8rem;
+  color: #495057;
+  width: 100px;
+  height: 40px;
+}
+
+.farm-back-button:hover {
+  background-color: #e9ecef;
+  transform: translateX(-2px);
+} 

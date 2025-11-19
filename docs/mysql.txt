@@ -1,0 +1,119 @@
+CREATE TABLE IF NOT EXISTS users (
+    id VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    nickname VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    name VARCHAR(50) NOT NULL,
+    is_black TINYINT NOT NULL DEFAULT 0,  -- BOOLEAN 대신 TINYINT(1) 사용
+    is_admin TINYINT NOT NULL DEFAULT 0,
+    kakao_id VARCHAR(64) UNIQUE NULL,
+    oauth_provider VARCHAR(16) NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE board (
+  id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id VARCHAR(50) NOT NULL,
+  nickname VARCHAR(50) NOT NULL,                 
+  title VARCHAR(70) NOT NULL,       
+  content TEXT NOT NULL,             
+  wdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  view INT(11) NOT NULL DEFAULT 0,
+  report INT(10) NOT NULL DEFAULT 0,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE comments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  board_id INT UNSIGNED NOT NULL,
+  commenter VARCHAR(20) NOT NULL,
+  content TEXT NOT NULL,
+  report INT(10) NoT NULL DEFAULT 0,
+  cdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (board_id) REFERENCES board(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE likes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  board_id INT UNSIGNED NOT NULL,         
+  user_id VARCHAR(50) NOT NULL,         
+  ldate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE (board_id, user_id),           
+  FOREIGN KEY (board_id) REFERENCES board(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE farms (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    location VARCHAR(255),
+    owner_username VARCHAR(100),
+    document_path VARCHAR(255),
+    is_approved TINYINT(1) DEFAULT 0
+);
+
+CREATE TABLE report_log (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id VARCHAR(50) NOT NULL,
+  target_type ENUM('post', 'comment') NOT NULL,
+  target_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY unique_report (user_id, target_type, target_id)
+);
+
+CREATE TABLE greenhouses (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    farm_id INT,
+    name VARCHAR(100),
+    num_rows INT,
+    num_cols INT,
+    grid_data JSON,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE iot (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    iot_name VARCHAR(100) NOT NULL,
+    owner_id VARCHAR(50) NOT NULL,
+    start_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    capture_interval ENUM('5', '15', '30') DEFAULT '15',
+    direction ENUM('left', 'right', 'both') DEFAULT 'both',
+    resolution ENUM('640x480', '1280x720', '1920x1080') DEFAULT '1280x720',
+    camera_on BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE sensor_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    gh_id INT,
+    temperature FLOAT,
+    humidity FLOAT,
+    timestamp DATETIME,
+    FOREIGN KEY (gh_id) REFERENCES greenhouses(id) ON DELETE SET NULL
+);
+
+CREATE TABLE notification (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    receiver_id VARCHAR(50) NOT NULL,
+    message TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    type ENUM('iot 탐색 종료', '병해충 발생', '새 댓글', '승인 허가') NOT NULL,
+    image_url VARCHAR(255),                       -- (병해충 발생 시)
+    target_id INT NOT NULL,                       -- url에 사용할 해당 id(탐색 종료/병해충 -> 비닐하우스, 새 댓글 -> 게시물, 승인 허가 -> 농장)
+    is_read BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (receiver_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE crop_groups (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    greenhouse_id INT NOT NULL,
+    group_cells JSON NOT NULL,
+    crop_type INT NOT NULL,
+    is_horizontal BOOLEAN NOT NULL,
+    harvest_amount INT DEFAULT 0,
+    total_amount INT DEFAULT 0,
+    is_read BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (greenhouse_id) REFERENCES greenhouses(id) ON DELETE CASCADE
+);

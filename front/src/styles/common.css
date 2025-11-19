@@ -1,0 +1,189 @@
+.back-button {
+  padding: 0.3rem 0.6rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 1.2rem;
+  transition: all 0.2s;
+  font-size: 0.8rem;
+  color: #495057;
+  width: 120px;
+  height: 40px;
+}
+
+.back-button:hover {
+  background-color: #e9ecef;
+  transform: translateX(-2px);
+}
+
+
+
+body {
+  overflow-y: overlay;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333333ad; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4CAF50; 
+  border-radius: 10px;
+}
+
+.error-message {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  color: #c62828;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid rgba(198, 40, 40, 0.2);
+  box-shadow: 0 4px 12px rgba(198, 40, 40, 0.1);
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-group input {
+  margin-top:10px;
+  width: 100%;
+  padding: 18px 24px;
+  border: 2px solid #e1e8ed;
+  border-radius: 16px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2c3e50;
+  height: 60px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.15);
+  transform: translateY(-2px);
+}
+
+.input-group input::placeholder {
+  color: #95a5a6;
+  font-weight: 400;
+}
+
+.control-button,
+.control-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.control-button:hover,
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(222, 224, 222, 0.4);
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+}
+
+.control-button:disabled,
+.control-btn:disabled {
+  background: linear-gradient(135deg, #bdc3c7 0%, #95a5a6 100%);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #2E7D32;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2E7D32;
+  border: 2px solid #C8E6C9;
+  padding: 16px 32px;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: #4CAF50;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.15);
+}
