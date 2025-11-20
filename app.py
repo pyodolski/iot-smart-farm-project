@@ -12,6 +12,7 @@ load_dotenv()
 
 # 블루프린트 임포트
 from routes.user import user_bp
+from routes.mobile import mobile_bp
 from routes.admin import admin_bp
 from routes.farm import farm_bp
 from routes.post import post_bp

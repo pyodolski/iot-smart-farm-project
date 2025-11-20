@@ -18,7 +18,7 @@ import json
 IMAGE_DIR = "test_images"  # 로컬 테스트용
 
 # 로컬 테스트용 서버 주소 (이 컴퓨터의 IP)
-SERVER_BASE_URL = "http://165.229.229.242:5001"
+SERVER_BASE_URL = "http://165.229.229.146:5001"
 
 # 배포 환경용 (주석 처리)
 # SERVER_BASE_URL = "https://smart-farm-ignore.onrender.com"
