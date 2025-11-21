@@ -489,7 +489,8 @@ def crop_groups_read():
                 "group_id": group_id, 
                 "iot_id": iot_id,
                 "greenhouse_id": greenhouse_id,  # greenhouse_id 추가
-                "upload_url": f"http://localhost:5001/api/greenhouses/iot-image-upload",
+                #"upload_url": f"http://localhost:5001/api/greenhouses/iot-image-upload",
+                "upload_url": f"https://smart-farm-ignore.vercel.app/api/greenhouses/iot-image-upload",
                 "action": "capture_and_upload"
             }
             
